@@ -63,7 +63,7 @@ addInputHandler("program_info_option", function (input) {
     console.log("state " + state);
     console.log("call " + call);
     var response = httpClient.request(
-      "https://telerivet-9403-dev.twil.io/ussd/ussd-listener",
+      "https://REPLACE_ME/ussd/twilio-ussd-listener",
       {
         method: "POST",
         headers: {
@@ -72,7 +72,7 @@ addInputHandler("program_info_option", function (input) {
         data: JSON.stringify({
           from_number: call.from_number,
           to_number: call.to_number,
-          secret: "3856a7563d2b0987gh",
+          secret: "REPLACE_ME",
           taskData: call.vars,
         }),
       }
