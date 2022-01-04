@@ -11,13 +11,15 @@ class TelerivetTaskInfoPanelItem extends React.Component {
       return <div>
       <br />
       <hr />
-      <h3><b>USSD Task Info</b></h3>
+      <h3><b>Telerivet Task Info</b></h3>
       <ul>
         <li>From:{task.attributes.from}</li>
         <li>To:{task.attributes.to}</li>
         <li>Type: {task.attributes.type}</li>
-        <li>Channel: {task.attributes.channel}</li>
-        
+        <li>Location: {task.attributes.location}</li>
+        <li>Program Info: {task.attributes.program_info}</li>
+        <li>Support: {task.attributes.support}</li>
+        <li>Callback: {task.attributes.callback}</li>
       </ul>
   </div>
     }

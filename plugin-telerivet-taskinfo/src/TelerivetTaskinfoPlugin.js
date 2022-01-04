@@ -23,13 +23,11 @@ export default class TelerivetTaskinfoPlugin extends FlexPlugin {
     this.registerReducers(manager);
     console.log('Custom Attributes ussd');
     const options = { sortOrder: -1 };
-    flex.TaskInfoPanel.Content.add(<TelerivetTaskInfoPanelItem key="ussd-info"/>);
+    flex.TaskInfoPanel.Content.add(<TelerivetTaskInfoPanelItem key="telerivet-info"/>);
       manager.strings.TaskHeaderLine = '{{task.attributes.channel}}';
-      manager.strings.TaskReserved = '{{task.attributes.channel}} request : ';
+      manager.strings.TaskReserved = '{{task.attributes.type}} request : {{task.attributes.from}}';
       manager.strings.TaskLineSmsReserved = ' {{task.attributes.channel}} request : ';
-      try{
-        console.log('Custom Attributes {{task.attributes.customAttributes}}');
-      }catch{}
+      
   }
 
   /**
