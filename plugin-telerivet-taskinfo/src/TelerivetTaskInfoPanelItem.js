@@ -14,7 +14,6 @@ class TelerivetTaskInfoPanelItem extends React.Component {
       <h3><b>Telerivet Task Info</b></h3>
       <ul>
         <li>From:{task.attributes.from}</li>
-        <li>To:{task.attributes.to}</li>
         <li>Type: {task.attributes.type}</li>
         <li>Language: {task.attributes.language}</li>
         <li>Location: {task.attributes.location}</li>
