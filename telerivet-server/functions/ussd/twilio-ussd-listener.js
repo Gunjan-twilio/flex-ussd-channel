@@ -15,19 +15,41 @@ exports.handler = async function (context, event, callback) {
     console.log(event);
     let toNumber = event["to_number"]; //telervit, (number user called)
     let fromNumber = event["from_number"]; //telerivet (number that called into telerivt)
-    let secret = event["secret"];
+    let secret = event['secret'];
+    let language_option = event["language_option"] == '1' ? 'English' : 'French';
     let location_option = event["location_option"];
-    let program_info_option= event["program_info_option"];
-    let callback_option = event["callback_option"];
-    let support_option= event["support_option"];
+    switch (event["location_option"]) {
+      case '1':
+        location_option = 'Dakar';
+        break;
+      case '2':
+        location_option = 'Touba';
+        break;
+      case '3':
+        location_option = 'Thies';
+        break;
+    }
+    let callback_option = event["callback_option"] == "1" ? "Yes" : "No";
+    let support_type_option = event["support_type_option"];
+    switch (event["support_type_option"]) {
+      case '1':
+        support_type_option = 'Shelter';
+        break;
+      case '2':
+        support_type_option = 'Legal';
+        break;
+      case '3':
+        support_type_option = 'Food and Clothing';
+        break;
+    }
     console.log(toNumber);
     console.log(fromNumber);
     console.log(secret);
     console.log(location_option);
-    console.log(program_info_option);
+    console.log(language_option);
     console.log(callback_option);
-    console.log(support_option);
-   
+    console.log(support_type_option);
+
     //validate it is a telerivet good request
     if (
       !secret ||
@@ -51,15 +73,15 @@ exports.handler = async function (context, event, callback) {
             channel: "ussd",
             to: toNumber,
             from: fromNumber,
+            language: language_option,
             location: location_option,
-            program_info: program_info_option,
             callback: callback_option,
-            support: support_option,
+            support_type: support_type_option,
           }),
         },
         (taskChannel = "ussd")
       );
-    console.warn("Created task " + task.sid);
+    console.log("Created task " + task.sid);
 
     //let telerivet know
     let response = new Twilio.Response();

@@ -16,10 +16,10 @@ class TelerivetTaskInfoPanelItem extends React.Component {
         <li>From:{task.attributes.from}</li>
         <li>To:{task.attributes.to}</li>
         <li>Type: {task.attributes.type}</li>
+        <li>Language: {task.attributes.language}</li>
         <li>Location: {task.attributes.location}</li>
-        <li>Program Info: {task.attributes.program_info}</li>
-        <li>Support: {task.attributes.support}</li>
-        <li>Callback: {task.attributes.callback}</li>
+        <li>Support Type: {task.attributes.support_type}</li>
+        <li>Callback Requested: {task.attributes.callback}</li>
       </ul>
   </div>
     }

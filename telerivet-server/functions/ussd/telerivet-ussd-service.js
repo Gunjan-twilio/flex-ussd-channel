@@ -1,11 +1,11 @@
 function main() {
   console.log("ivr");
   sendReply("Please choose language\n1) English\n2) French");
-  promptDigits("location_option");
+  promptDigits("language_option");
 }
 
-addInputHandler("location_option", function (input) {
-  console.log("location_option");
+addInputHandler("language_option", function (input) {
+  console.log("language_option");
   if (input == "1") {
     sendReply("Please choose location \n1) Dakar\n2) Touba\n3 Thies");
   } else if (input == "2") {
@@ -15,11 +15,11 @@ addInputHandler("location_option", function (input) {
   } else {
     sendReply("Invalid menu option");
   }
-  promptDigits("support_option");
+  promptDigits("location_option");
 });
 
-addInputHandler("support_option", function (input) {
-console.log("support_option");
+addInputHandler("location_option", function (input) {
+console.log("location_option");
   if (input == "1") {
     sendReply(
       "Please enter support type \n1) Shelter\n2) Legal\n3) Food and Clothing"
@@ -31,16 +31,16 @@ console.log("support_option");
   } else {
     sendReply("Invalid menu option");
   }
-  promptDigits("callback_option");
+  promptDigits("support_type_option");
 });
-addInputHandler("callback_option", function (input) {
+addInputHandler("support_type_option", function (input) {
   sendReply("Do you want us to call you back \n1) Yes\n2) No");
 
-  promptDigits("program_info_option");
+  promptDigits("callback_option");
 });
 
-addInputHandler("program_info_option", function (input) {
- console.log("program_info_option");
+addInputHandler("callback_option", function (input) {
+ console.log("callback_option");
   if (input == "2") {
     sendReply("Thank you");
   } else if (input == "1") {
@@ -63,7 +63,7 @@ addInputHandler("program_info_option", function (input) {
     console.log("state " + state);
     console.log("call " + call);
     var response = httpClient.request(
-      "https://REPLACE_ME/ussd/twilio-ussd-listener",
+      "https://REPLACE_ME.twil.io/ussd/twilio-ussd-listener",
       {
         method: "POST",
         headers: {
@@ -73,7 +73,10 @@ addInputHandler("program_info_option", function (input) {
           from_number: call.from_number,
           to_number: call.to_number,
           secret: "REPLACE_ME",
-          taskData: call.vars,
+          language_option: call.vars.language_option,
+          location_option: call.vars.location_option,
+          support_type_option: call.vars.support_type_option,
+          callback_option: call.vars.callback_option,
         }),
       }
     );
