@@ -17,6 +17,7 @@
       let toNumber = event["to_number"]; //telervit, (number user called)
       let fromNumber = event["from_number"]; //telerivet (number that called into telerivt)
       let secret = event["secret"];
+      let taskData = event["taskData"];
       console.log(event);
       
       //validate it is a telerivet good request
@@ -37,6 +38,7 @@
         channel:'ussd',
         to: toNumber,
         from: fromNumber,
+        customAttributes : taskData,
       })}, taskChannel = 'ussd');
       console.warn('Created task ' + task.sid);
       
