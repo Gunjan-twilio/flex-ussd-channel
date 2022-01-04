@@ -7,7 +7,7 @@ function main() {
 addInputHandler("language_option", function (input) {
   console.log("language_option");
   if (input == "1") {
-    sendReply("Please choose location \n1) Dakar\n2) Touba\n3 Thies");
+    sendReply("Please choose location \n1) Dakar\n2) Touba\n3) Thies");
   } else if (input == "2") {
     sendReply(
       "Veuillez sélectionner l'emplacement \n 1) Dakar\n2) Touba\n3) Thies"
@@ -20,6 +20,7 @@ addInputHandler("language_option", function (input) {
 
 addInputHandler("location_option", function (input) {
 console.log("location_option");
+
   if (input == "1") {
     sendReply(
       "Please enter support type \n1) Shelter\n2) Legal\n3) Food and Clothing"
@@ -28,7 +29,11 @@ console.log("location_option");
     sendReply(
       "Please enter support type \n1) Shelter\n2) Legal\n3) Food and Clothing"
     );
-  } else {
+  } else if (input == "3") {
+    sendReply(
+      "Please enter support type \n1) Shelter\n2) Legal\n3) Food and Clothing"
+    );
+  }else {
     sendReply("Invalid menu option");
   }
   promptDigits("support_type_option");
@@ -73,10 +78,10 @@ addInputHandler("callback_option", function (input) {
           from_number: call.from_number,
           to_number: call.to_number,
           secret: "REPLACE_ME",
-          language_option: call.vars.language_option,
           location_option: call.vars.location_option,
-          support_type_option: call.vars.support_type_option,
+          language_option: call.vars.language_option,
           callback_option: call.vars.callback_option,
+          support_type_option: call.vars.support_type_option,
         }),
       }
     );
